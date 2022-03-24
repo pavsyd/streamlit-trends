@@ -24,9 +24,19 @@ def main():
 
     @st.cache
     def get_top(country):
-        ds = pytrend.trending_searches(pn=country.lower())
-        ds.columns = ['trends']
-        return ds.head(10).trends.unique()
+        if len(country.split()) == 1:
+            ds = pytrend.trending_searches(pn=country.lower())
+            ds.columns = ['trends']
+            return ds.head(10).trends.unique()
+        else:
+            joined_name = ""
+            for w in country.split():
+                joined_name += w + "_"
+            joined_name = re.sub(r'_$', '', joined_name)
+
+            ds = pytrend.trending_searches(pn=joined_name.lower())
+            ds.columns = ['trends']
+            return ds.head(10).trends.unique()
 
     @st.cache
     def get_news(term):
