@@ -64,6 +64,8 @@ def main():
     col_one, col_two = st.columns(2)
 
     with col_one:
+        
+        st.write(f'Search trends in {country_one}')
 
         for t in get_top(country_one):
 
@@ -79,6 +81,8 @@ def main():
                     st.write(get_news(t))
 
     with col_two:
+        
+        st.write(f'Search trends in {country_two}')
 
         for t in get_top(country_two):
 
