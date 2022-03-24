@@ -66,10 +66,12 @@ def main():
     with col_one:
         
         st.write(f'Search trends in {country_one}')
+        
+        tops_one = get_top(country_one)
 
-        for t in get_top(country_one):
+        for t in tops_one:
 
-            with st.expander(t):
+            with st.expander(f'{np.where(tops_one == t)[0] + 1} {t}'):
 
                 if st.checkbox('Show related queries', key=f'{t}one'):
                     pytrend.build_payload(kw_list=[t])
@@ -83,10 +85,12 @@ def main():
     with col_two:
         
         st.write(f'Search trends in {country_two}')
+        
+        tops_two = get_top(country_two)
 
-        for t in get_top(country_two):
+        for t in tops_two:
 
-            with st.expander(t):
+            with st.expander(f'{np.where(tops_two == t)[0] + 1} {t}'):
 
                 if st.checkbox('Show related queries', key=f'{t}two'):
                     pytrend.build_payload(kw_list=[t])
