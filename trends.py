@@ -4,6 +4,7 @@ from GoogleNews import GoogleNews
 from googletrans import Translator
 import pandas as pd 
 import re
+import numpy as np
 
 def main():
 
